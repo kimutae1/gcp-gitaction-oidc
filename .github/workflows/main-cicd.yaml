@@ -1,0 +1,29 @@
+name: List services in GCP
+on:
+  pull_request:
+  #push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+
+jobs:
+  Get_OIDC_ID_token:
+    runs-on: ubuntu-latest
+    steps:
+    - id: 'auth'
+      name: 'Authenticate to GCP'
+      uses: 'google-github-actions/auth@v1'
+      with:
+          create_credentials_file: 'true'
+          #workload_identity_provider: 'https://iam.googleapis.com/projects/132409220076/locations/global/workloadIdentityPools/github/providers/latimi'
+          workload_identity_provider: 'projects/132409220076/locations/global/workloadIdentityPools/github/providers/latimi'
+          service_account: 'kth-sa@storied-imprint-408506.iam.gserviceaccount.com'
+    - id: 'gcloud'
+      name: 'gcloud'
+      run: |-
+
+        cat "${{ steps.auth.outputs.credentials_file_path }}"
+        gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+        gcloud services list --project=storied-imprint-408506
