@@ -24,9 +24,6 @@ jobs:
      - name: 'env'
        run: |
           env
-          #         echo  ${ secrets.GITHUB_TOKEN } > /tmp/1.txt ;
-          #         cat /tmp/1.txt
-      #
 #CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: /home/runner/work/gcp-gitaction-oidc/gcp-gitaction-oidc/gha-creds-fd2047c6d557fb64.json
 #GOOGLE_GHA_CREDS_PATH: /home/runner/work/gcp-gitaction-oidc/gcp-gitaction-oidc/gha-creds-fd2047c6d557fb64.json
 #GOOGLE_APPLICATION_CREDENTIALS: /home/runner/work/gcp-gitaction-oidc/gcp-gitaction-oidc/gha-creds-fd2047c6d557fb64.json
