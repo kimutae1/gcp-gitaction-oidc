@@ -23,8 +23,9 @@ jobs:
  
      - name: '토큰좀 보자'
        run: |
-         echo  ${ secrets.GITHUB_TOKEN } > /tmp/1.txt ;
-         cat /tmp/1.txt
+          env
+          #         echo  ${ secrets.GITHUB_TOKEN } > /tmp/1.txt ;
+          #         cat /tmp/1.txt
 
      - name: 'GCP 서비스 목록 조회'
        run: |
