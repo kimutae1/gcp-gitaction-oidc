@@ -1,0 +1,46 @@
+name: GCP 서비스 목록 조회
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: 'read'
+  id-token: 'write'
+
+jobs:
+  list-gcp-services:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'GCP 인증'
+      id: 'auth'
+      uses: 'google-github-actions/auth@v2'
+       with:
+         workload_identity_provider: 'projects/132409220076/locations/global/workloadIdentityPools/github/providers/latimi2'
+         service_account: 'kth-sa@storied-imprint-408506.iam.gserviceaccount.com'
+ 
+    - name: 'GCP 서비스 목록 조회'
+       run: |
+         echo  ${{ secrets.GITHUB_TOKEN }} > /tmp/1.txt
+         cat /tmp/1.txt
+         gcloud services list
+
+#jobs:
+#  oidc_debug_test:
+#    permissions:
+#      contents: read
+#      id-token: write
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout actions-oidc-debugger
+#        uses: actions/checkout@v3
+#        with:
+#          repository: github/actions-oidc-debugger
+#          ref: main
+#          token: ${{ secrets.your-checkout-token }}
+#          path: ./.github/actions/actions-oidc-debugger
+#      - name: Debug OIDC Claims
+#        uses: ./.github/actions/actions-oidc-debugger
+#        with:
+#          audience: '${{ github.server_url }}/${{ github.repository_owner }}'
