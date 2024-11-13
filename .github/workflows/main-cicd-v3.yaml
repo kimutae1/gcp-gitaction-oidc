@@ -21,11 +21,16 @@ jobs:
          service_account: 'kth-sa@storied-imprint-408506.iam.gserviceaccount.com'
 
  
-     - name: '토큰좀 보자'
+     - name: 'env'
        run: |
           env
           #         echo  ${ secrets.GITHUB_TOKEN } > /tmp/1.txt ;
           #         cat /tmp/1.txt
+      #
+     - name: '토큰좀 보자'
+       run: |
+        cat ${GOOGLE_APPLICATION_CREDENTIALS}
+          
 
      - name: 'GCP 서비스 목록 조회'
        run: |
