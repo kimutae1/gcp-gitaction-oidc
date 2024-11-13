@@ -16,9 +16,9 @@ jobs:
      - name: 'GCP 인증'
        id: 'auth'
        uses: 'google-github-actions/auth@v2'
-        with:
-          workload_identity_provider: 'projects/132409220076/locations/global/workloadIdentityPools/github/providers/latimi2'
-          service_account: 'kth-sa@storied-imprint-408506.iam.gserviceaccount.com'
+       with:
+         workload_identity_provider: 'projects/132409220076/locations/global/workloadIdentityPools/github/providers/latimi2'
+         service_account: 'kth-sa@storied-imprint-408506.iam.gserviceaccount.com'
 
  
      - name: '토큰좀 보자'
